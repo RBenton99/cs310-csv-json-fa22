@@ -78,9 +78,8 @@ public class Converter {
             
             String[] currentRow = iterator.next();
             
-            for (int i = 0; i < currentRow.length;) {
+            for (int i = 0; i < currentRow.length; i++) {
                 colHeader.add(currentRow[i]);
-                i++;
             }
             
             while (iterator.hasNext()){
@@ -88,10 +87,9 @@ public class Converter {
                 currentData = new JSONArray();
                 rowHeader.add(currentRow[0]);
                 
-                for (int i = 1; i < currentRow.length;){
+                for (int i = 1; i < currentRow.length; i++){
                     int dataStringToInt = Integer.parseInt(currentRow[i]);
                     currentData.add(dataStringToInt);
-                    i++;
                 }
                 data.add(currentData);
             }
@@ -124,9 +122,9 @@ public class Converter {
             
             JSONObject jsonObject = (JSONObject)parser.parse(jsonString);
             
-            JSONArray colHeadersJsonArray = (JSONArray)jsonObject.get("Column");
-            JSONArray rowHeadersJsonArray = (JSONArray)jsonObject.get("Row");
-            JSONArray dataJsonArray = (JSONArray)jsonObject.get("Data");
+            JSONArray colHeadersJsonArray = (JSONArray)jsonObject.get("colHeaders");
+            JSONArray rowHeadersJsonArray = (JSONArray)jsonObject.get("rowHeaders");
+            JSONArray dataJsonArray = (JSONArray)jsonObject.get("data");
             
             String [] colHeaders = new String[colHeadersJsonArray.size()];
             
